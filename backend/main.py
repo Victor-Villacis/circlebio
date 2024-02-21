@@ -75,15 +75,15 @@ def process_file(file_path: str):
     return response
 
 
-def gc_at_content(sequence_str):
-    gc_count = sequence_str.count("G") + sequence_str.count("C")
-    at_count = sequence_str.count("A") + sequence_str.count("T")
+def calculate_gc_at_content(sequence: str):
+    gc_count = sequence.count("G") + sequence.count("C")
+    at_count = sequence.count("A") + sequence.count("T")
     total_bases = gc_count + at_count
     if total_bases == 0:
         return 0, 0
-    gc_content_percentage = (float(gc_count) / total_bases) * 100
-    at_content_percentage = (float(at_count) / total_bases) * 100
-    return gc_content_percentage, at_content_percentage
+    gc_content_percentage = (gc_count / total_bases) * 100
+    at_content_percentage = (at_count / total_bases) * 100
+    return round(gc_content_percentage, 2), round(at_content_percentage, 2)
 
 
 def process_fasta_file(fasta_file_path: str, file_type: str):
@@ -95,7 +95,9 @@ def process_fasta_file(fasta_file_path: str, file_type: str):
             sequence_length = len(sequence_str)
 
             # Calculate both GC and AT content
-            gc_content_percentage, at_content_percentage = gc_at_content(sequence_str)
+            gc_content_percentage, at_content_percentage = calculate_gc_at_content(
+                sequence_str
+            )
 
             reverse_complement = str(seq_record.seq.reverse_complement())
 
@@ -118,15 +120,6 @@ def process_fasta_file(fasta_file_path: str, file_type: str):
         }
     except Exception as e:
         return {"error": f"Error processing FASTA file: {e}", "fileType": file_type}
-
-
-def calculate_gc_at_content(sequence: str):
-    gc_count = sequence.count("G") + sequence.count("C")
-    at_count = sequence.count("A") + sequence.count("T")
-    total = float(gc_count + at_count)
-    gc_content = (gc_count / total * 100) if total > 0 else 0
-    at_content = (at_count / total * 100) if total > 0 else 0
-    return gc_content, at_content
 
 
 def process_bam_file(bam_file_path: str):
