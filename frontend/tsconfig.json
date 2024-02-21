@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "plugins": [
+      {
+        "name": "next",
+      },
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+    },
+    "strictNullChecks": true,
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/lib/placeholder-data.js",
+    "scripts/seed.js",
+    "pages/api/mockData.tjs",
+    "src/app/dashboard/analysis/old.back",
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+}

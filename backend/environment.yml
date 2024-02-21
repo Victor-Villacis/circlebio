@@ -1,0 +1,13 @@
+name: circlebio
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.8
+  - biopython
+  - samtools
+  - pysam
+  - uvicorn
+  - fastapi
+  - matplotlib
+  - python-multipart
