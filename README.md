@@ -28,4 +28,13 @@ docker run -it -p 8000:8000 --name circlebio_container -v "$(pwd):/home/circlebi
 
 `cd circlebio/frontend` and then install modules and start server with `yarn install && yarn dev`.
 
-## Description
+## Instructions
+
+![circlebio](https://i.ibb.co/sw93rpn/Screenshot-2024-02-21-115447.png)
+
+- Log in.
+- Drag and drop or click to upload FASTA or BAM files. The maximum file size is 500 MB.
+
+### What It Does With DNA Data
+
+Depending on the type of file uploaded, the tool can figure out the length of the DNA sequence, how much of it is made up of certain genetic materials (G/C content), and even flip the sequence into its reverse complement. For more complex files, it can show how many different pieces of data were stitched together to make up the sequence and provide a visual representation in a form of a histogram.
